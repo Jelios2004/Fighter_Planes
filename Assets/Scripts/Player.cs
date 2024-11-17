@@ -100,6 +100,7 @@ public class Player : MonoBehaviour
     IEnumerator SpeedPowerDown()
     {
         yield return new WaitForSeconds(3f);
+        gameManager.PlayPowerDown();
         speed = 6f;
         thruster.gameObject.SetActive(false);
         gameManager.UpdatePowerupText("");
@@ -108,6 +109,7 @@ public class Player : MonoBehaviour
     IEnumerator ShootingPowerDown()
     {
         yield return new WaitForSeconds(3f);
+        gameManager.PlayPowerDown();
         shooting = 1;
         gameManager.UpdatePowerupText("");
     }
@@ -116,6 +118,7 @@ public class Player : MonoBehaviour
     {
         Debug.Log("power down");
         yield return new WaitForSeconds(3f);
+        gameManager.PlayPowerDown();
         hasShield = false;
         shield.gameObject.SetActive(false);
         gameManager.UpdatePowerupText("");
