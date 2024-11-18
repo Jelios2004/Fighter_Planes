@@ -12,6 +12,8 @@ public class GameManager : MonoBehaviour
     public GameObject enemyOne;
     public GameObject cloud;
     public GameObject powerup;
+    public GameObject sideEnemy;
+    public GameObject sideSideEnemy;
 
     public AudioClip powerUp;
     public AudioClip powerDown;
@@ -32,6 +34,8 @@ public class GameManager : MonoBehaviour
     {
         Instantiate(player, transform.position, Quaternion.identity);
         InvokeRepeating("CreateEnemyOne", 1f, 3f);
+        InvokeRepeating("CreateSideEnemy", 1f, 6f);
+        InvokeRepeating("CreateSideSideEnemy", 3f, 3f);
         StartCoroutine(CreatePowerup());
         CreateSky();
         score = 0;
@@ -49,6 +53,18 @@ public class GameManager : MonoBehaviour
     void CreateEnemyOne()
     {
         Instantiate(enemyOne, new Vector3(Random.Range(-9f, 9f), 7.5f, 0), Quaternion.Euler(0, 0, 180));
+    }
+
+    void CreateSideEnemy()
+    {
+        Instantiate(sideEnemy, new Vector3(24f, Random.Range(1f, 9f), 0), Quaternion.identity);
+        Debug.Log("Side Enemy Spawned");
+    }
+
+    void CreateSideSideEnemy()
+    {
+        Instantiate(sideSideEnemy, new Vector3(-24f, Random.Range(1f, 9f), 0), Quaternion.identity);
+        Debug.Log("Side Side Enemy Spawned");
     }
 
     IEnumerator CreatePowerup()

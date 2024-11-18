@@ -48,7 +48,7 @@ public class Player : MonoBehaviour
         {
             transform.position = new Vector3(transform.position.x * -1, transform.position.y, 0);
         }
-        if (transform.position.y > verticalScreenSize || transform.position.y < -verticalScreenSize)
+        if (transform.position.y > 0f || transform.position.y < -verticalScreenSize)
         {
             transform.position = new Vector3(transform.position.x, transform.position.y * -1, 0);
         }
